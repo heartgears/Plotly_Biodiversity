@@ -60,7 +60,7 @@ function buildCharts(sample) {
     // 3. Create a variable that holds the samples array. 
     var samples = data.samples;
     // 4. Create a variable that filters the samples for the object with the desired sample number.
-    var filterNumber = metadata.filter(sampleObj => sampleObj.id == sample);
+    var filterNumber = samples.filter(sampleObj => sampleObj.id == sample);
     //  5. Create a variable that holds the first sample in the array.
     var firstSample = filterNumber[0];
 
@@ -68,6 +68,9 @@ function buildCharts(sample) {
     var otuIds = firstSample.otu_ids;
     var otuLabels = firstSample.otu_labels;
     var sampleValues = firstSample.samples_values;
+    console.log(otuIds)
+    console.log(otuLabels)
+    console.log(sampleValues)
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
@@ -77,9 +80,9 @@ function buildCharts(sample) {
 
     // 8. Create the trace for the bar chart. 
     var barData = {
-      x: samplesValues.slice(0,10).reverse()
-      y: yticks
-      type: "bar"
+      x: samplesValues.slice(0,10).reverse(),
+      y: yticks,
+      type: "bar",
       text: otuLabels.slice(0,10).reverse()
     };
 
@@ -90,5 +93,24 @@ function buildCharts(sample) {
 
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot('bar',barData, barLayout);
+
+    // 1. Create the trace for the bubble chart.
+    var bubbleData = [
+      x: otuIds,
+      y: sampleValues,
+      text: otuLabels
+      mode: "markers"
+
+    ];
+
+    // 2. Create the layout for the bubble chart.
+    var bubbleLayout = {
+      title: 'Cultures per Sample'
+      xaxis: otuIds
+      hovermode: "closest"
+    };
+
+    // 3. Use Plotly to plot the data with the layout.
+    Plotly.newPlot('bubble', bubbleData, bubbleLayout); 
   });
 }
