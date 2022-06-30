@@ -68,9 +68,9 @@ function buildCharts(sample) {
     var otuIds = firstSample.otu_ids;
     var otuLabels = firstSample.otu_labels;
     var sampleValues = firstSample.samples_values;
-    console.log(otuIds)
-    console.log(otuLabels)
-    console.log(sampleValues)
+    console.log(otuIds);
+    console.log(otuLabels);
+    console.log(sampleValues);
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
@@ -140,7 +140,7 @@ function buildCharts(sample) {
     var gaugeLayout = { 
       width: 600, 
       height: 500, 
-      margin: { t: 0, b: 0 } 
+      margin: { t: 0, b: 0 }
     };
     
     // 6. Use Plotly to plot the gauge data and layout.
