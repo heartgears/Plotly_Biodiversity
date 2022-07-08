@@ -1,0 +1,7 @@
+.jumbotron {
+    background-image: url("../Images/Bacteria_UT_Austin.jpeg");
+    background-size: 100% 100%;
+    text-align: center;
+  }
+
+.montserrat { font-family: Montserrat; }

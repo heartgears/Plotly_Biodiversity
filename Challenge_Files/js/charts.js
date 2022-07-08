@@ -91,7 +91,7 @@ function buildCharts(sample) {
 
     // 9. Create the layout for the bar chart. 
     var barLayout = {
-      title: "Belly Button Bacteria Cultures"
+      title: "Top 10 Bacterial Cultures Found"
     };
 
     // 10. Use Plotly to plot the data with the layout. 
@@ -121,7 +121,9 @@ function buildCharts(sample) {
     Plotly.newPlot("bubble", bubbleData, bubbleLayout); 
 
     // 3. Create a variable that holds the washing frequency.
-    var washingFrequencey = parseFloat[firstSample.wfreq];
+    var metadataArray = data.metadata.filter(sampleObj => sampleObj.id == sample);
+    var metadata1 = metadataArray[0];
+    var washingFrequencey = parseFloat(metadata1.wfreq);
     console.log(washingFrequencey)
 
     // 4. Create the trace for the gauge chart.
